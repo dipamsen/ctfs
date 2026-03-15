@@ -29,18 +29,18 @@ The flag was encrypted by XORing it with output_5 (used as a 4-byte repeating ke
 
 We have
 
-$
-x_2 = (a x_1  + c) \mod{m}\\
-x_3 = (a x_2  + c) \mod{m}\\
-x_4 = (a x_3  + c) \mod{m}\\
-$
+$$
+x_2 = (a x_1  + c) \mod{m}$$$$
+x_3 = (a x_2  + c) \mod{m}$$$$
+x_4 = (a x_3  + c) \mod{m}$$$$
+$$
 
 So 
 
-$
-x_3 - x_2 = a (x_2 - x_1) \mod{m}\\
-\Rightarrow a = (x_2 - x_1)^{-1} (x_3 - x_2) \mod{m}\\
-$
+$$
+x_3 - x_2 = a (x_2 - x_1) \mod{m}$$$$
+\Rightarrow a = (x_2 - x_1)^{-1} (x_3 - x_2) \mod{m}
+$$
 
 ```
 >>> a = pow(x2 - x1, -1, m) * (x3 - x2) % m
@@ -50,9 +50,9 @@ $
 
 and
 
-$
-c = x_2 - a x_1 \mod{m}\\
-$
+$$
+c = x_2 - a x_1 \mod{m}
+$$
 
 ```
 >>> c = (x2 - a * x1) % m
@@ -62,9 +62,9 @@ $
 
 Now we can find $x_5$:
 
-$
-x_5 = a x_4 + c \mod{m}\\
-$
+$$
+x_5 = a x_4 + c \mod{m}
+$$
 
 ```
 >>> x5 = (a * x4 + c) % m
