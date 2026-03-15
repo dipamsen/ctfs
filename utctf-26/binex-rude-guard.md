@@ -11,7 +11,6 @@ Attachments: `pwnable`
 just put the binary into dogbolt :P
 
 ```c
-
 typedef struct struct_0 {
     char padding_0[8];
     char *field_8;
@@ -79,11 +78,19 @@ unsigned long long secret_function(void)
 
 Clearly, `secret_function` will print the flag, except it isn't called. But we can simulate what it will do, because the decompiler has helpfully put the addresses of the memory for the stack variables.
 
+```c
+v0 = bp - 0x48
+v1 = bp - 0x40
+v2 = bp - 0x38
+v3 = bp - 0x30
+v4 = bp - 0x29 // should be 28?
+```
+
 Memory layout:
 
 ![mem](assets/mem.png)
 
-Suspiciously, v4 (supposedly) is not aligned with the stack boundary and overlaps with v3. Let's ignore that for now... 
+Suspiciously, v4 is not aligned with the stack boundary and overlaps with v3 (if we trust what the decompiler says). Let's ignore that for now... 
 
 What the code is doing is reading 39 bytes from the stack from `v0`, and printing by XORing with 50. So we can simulate it:
 
