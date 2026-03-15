@@ -111,4 +111,4 @@ aaand thats actually not the right flag. removing the extra `t` gives the correc
 utflag{gu4rd_w4s_w34ker_th4n_i_th0ught}
 ```
 
-which presumably indicates what was happening was that the variables `v3` and `v4` were using overlapping memory, (the lower two bytes of v4 were the same as the higher two bytes of v3).
+which presumably indicates what was happening was that the variables `v3` and `v4` were using overlapping memory, (the lower order byte of v4 was the same as the higher order byte of v3).
